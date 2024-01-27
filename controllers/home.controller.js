@@ -2,7 +2,7 @@ const productsModel = require("../models/products.model");
 
 exports.getHome = (req, res, next) => {
     let category = req.query.category;
-    let validCategories = ["clothes", "phones", "computers"];
+    let validCategories = ["clothes", "phones", "computers","cars"];
     let productsPromise;
     if (category && validCategories.includes(category))
         productsPromise = productsModel.getProductsByCategory(category);

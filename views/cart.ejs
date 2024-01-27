@@ -1,5 +1,80 @@
 <%- include('parts/header') %>
 <%- include('parts/nav') %>
+<style>
+  
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+thead {
+    background-color: #3498db;
+    color: #fff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.form-control {
+    width: 50px;
+}
+
+.btn {
+    display: inline-block;
+    margin: 5px;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-success {
+    background-color: #4caf50;
+}
+
+.btn-primary {
+    background-color: #3498db;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+}
+
+.alert-danger {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+</style>
+
 
 <div class="container">
 
@@ -18,11 +93,11 @@
             </thead>
             <tbody>
                 <% for (let i = 0; i < items.length; i++) { %>
-                    <tr>
-                        <td> <%= i+1 %> </td>
-                        <td> <a href="/product/<%= items[i].productId %>"><%= items[i].name %></a> </td>
-                        <td> <%= items[i].price %> $ </td>
-                        <form method="POST">
+                    <form method="POST">
+                        <tr>
+                            <td> <%= i+1 %> </td>
+                            <td> <a href="/product/<%= items[i].productId %>"><%= items[i].name %></a> </td>
+                            <td> <%= items[i].price %> $ </td>
                             <td> <input type="text" name="amount" class="form-control" value="<%= items[i].amount %>"> </td>
                             <td> <%= items[i].price * items[i].amount %> $ </td>
                             <td>
@@ -31,9 +106,10 @@
                                 <a class="btn btn-primary" href="/verify-order?order=<%= items[i]._id %>"> Order </a>
                                 <input type="submit" class="btn btn-danger" value="Delete" formaction="/cart/delete">
                             </td>
-                        </form>
-                    </tr>
+                        </tr>
+                    </form>
                 <% } %>
+                
             </tbody>
         </table>
 

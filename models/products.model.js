@@ -11,7 +11,7 @@ const productSchema = mongoose.Schema({
 });
 
 const Product = mongoose.model("product", productSchema);
-
+ 
 exports.addNewProduct = data => {
     return new Promise((resolve, reject) => {
         mongoose

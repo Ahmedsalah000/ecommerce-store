@@ -18,37 +18,35 @@
         </style>
 
         <div class="container mt-4">
-            <%if (!product){%>
+            <% if (!product) { %>
                 <div class="alert alert-danger">
-                    there is no products mathes this id
+                    There is no product that matches this id.
                 </div>
-
-                <%}else{%>
-                    <div class="row justify-content-center">
-                        <div class="col-12 col-sm-8 col-md-6 col-lg-4 mb-4">
-                            <div class="card card-custom">
-                                <img src="/<%= product.image %>" class="card-img-top" alt="Product Image">
-                                <form action="/cart" method="post" class="mt-3">
-                                    <div class="form-group">
-                                        <input type="number" name="amount" class="form-control"
-                                            placeholder="Enter quantity">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary mt-3">Add to Cart</button>
-                                </form>
-                                <div class="card-body pt-3">
-                                    <h3 class="card-title">
-                                        <%= product.name %>
-                                    </h3>
-                                    <h5 class="card-price mb-2">Price: <%= product.price %>$</h5>
-                                    <p class="card-description mb-0">
-                                        <%= product.description %>
-                                    </p>
+            <% } else { %>
+                <div class="row justify-content-center">
+                    <div class="col-12 col-sm-8 col-md-6 col-lg-4 mb-4">
+                        <div class="card card-custom">
+                            <img src="/<%= product.image %>" class="card-img-top" alt="Product Image">
+                            <form action="/cart" method="post" class="mt-3">
+                                <div class="form-group">
+                                    <input type="number" name="amount" class="form-control" placeholder="Enter quantity">
                                 </div>
+                                <button type="submit" class="btn btn-primary mt-3">Add to Cart</button>
+                            </form>
+                            <div class="card-body pt-3">
+                                <h3 class="card-title">
+                                    <%= product.name %>
+                                </h3>
+                                <h5 class="card-price mb-2">Price: <%= product.price %>$</h5>
+                                <p class="card-description mb-0">
+                                    <%= product.description %>
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <%}%>
-
+                </div>
+            <% } %>
+            
         </div>
 
 

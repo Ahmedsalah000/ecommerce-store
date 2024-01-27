@@ -37,6 +37,18 @@ router.get("/login",authGuard.notAuth,authController.getLogin)
 router.post(
     "/login",authGuard.notAuth,
     bodyParser.urlencoded({extended:true}),
+    check('email')
+    .not()
+    .isEmpty()
+    .withMessage('email is required')
+    .isEmail()
+    .withMessage('invalid format'),    
+    check('password')
+    .not()
+    .isEmpty()
+    .withMessage('password is required')
+    .isLength({min:6})
+    .withMessage("password must be at least 6 charachters"),
     authController.postLogin
 )
 router.all('/logout',authGuard.isAuth,authController.logout)

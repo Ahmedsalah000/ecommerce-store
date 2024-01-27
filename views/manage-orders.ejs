@@ -1,5 +1,83 @@
 <%- include('parts/header') %>
-<%- include('parts/navbar') %>
+<%- include('parts/nav') %>
+<style>
+    /* Add this to your CSS file or style tag in the HTML file */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+thead {
+    background-color: #3498db;
+    color: #fff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: 1px solid #007bff;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: 1px solid #28a745;
+}
+
+.btn-primary:hover,
+.btn-success:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+</style>
 
 <div class="container">
 
@@ -17,7 +95,7 @@
                 <td>Total</td>
                 <td>Address</td>
                 <td>Status</td>
-                <td></td>
+
             </thead>
             <tbody>
                 <% for (let i = 0; i < items.length; i++) { %>
@@ -30,7 +108,6 @@
                         <td> <%= items[i].price * items[i].amount %> $ </td>
                         <td> <%= items[i].address %> </td>
                         <td> <%= items[i].status %> </td>
-                        <td>
                             <% if (items[i].status === 'pending') { %>
                             <form style="display: inline-block" method="POST" action="/admin/orders">
                                 <input type="hidden" name="orderId" value="<%= items[i]._id %>">

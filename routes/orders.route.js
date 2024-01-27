@@ -2,7 +2,7 @@ const router = require("express").Router();
 const bodyParser = require("body-parser");
 const check = require("express-validator").check;
 
-const orderController = require("../controllers/order.constroller");
+const orderController = require("../controllers/order.controller");
 const authGuard = require("./guards/auth.guard");
 
 router.get("/verify-order", authGuard.isAuth, orderController.getOrderVerify);
