@@ -1,0 +1,62 @@
+<%- include('parts/header')%>
+<%- include('parts/nav')%>
+
+<div class="container text-center mt-4">
+    <h3>Create Account</h3>
+    <form action="/signup" method="Post" class="mb-3" novalidate>
+        <input type="text" class="form-control mb-3" name="username" placeholder="Username">
+        <% let usernameError =validationErrors.find(err=>err.param==='username')%>
+        <% if (usernameError){%>
+            <p class="alert alert-danger">
+                <%=usernameError.msg%>
+            </p>
+            <%}%>
+        <input type="email" class="form-control mb-3" name="email" placeholder="E-mail">
+        <% let emailError =validationErrors.find(err=>err.param==='email')%>
+        <% if (emailError){%>
+            <p class="alert alert-danger">
+                <%=emailError.msg%>
+            </p>
+            <%}%>
+        <input type="password" class="form-control mb-3" name="password" placeholder="Password">
+        <% let passwordError =validationErrors.find(err=>err.param==='passsword')%>
+        <% if (passwordError){%>
+            <p class="alert alert-danger">
+                <%=passwordError.msg%>
+            </p>
+            <%}%>
+        <input type="Password" class="form-control mb-3" name="confirmPassword" placeholder="confirmPassword">
+        <input type="submit" class=" btn btn-primary mb-3" value="Create Account" >
+    </form>
+    <br>
+    <%if(authError){%>
+        <p class="alert alert-danger">
+        <%=authError%>
+    </p>
+    <%}%>
+    <% for (let error of validationErrors){ %>
+        <p class="alert alert-danger">
+            <%= error.msg%>
+        </p>
+        <% } %>
+    <br>
+    <div>
+        Don't have account ? <a href="/login mb-3">Create Account</a>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include('parts/footer')%>
